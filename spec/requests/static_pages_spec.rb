@@ -5,25 +5,24 @@ describe "Static pages" do
   let(:base_title) { "Ruby on Rails Tutorial Sample App" }
 
   describe "Home page" do
+    before {visit root_path }
 
     it "should have the content 'Sample App'" do
-      visit '/static_pages/home'
       expect(page).to have_content('Sample App')
     end
 
     it "should not have the title 'Home'" do
-      visit '/static_pages/home'
-      expect(page).to have_title("#{base_title}")
+      expect(page).to have_title("Ruby on Rails Tutorial Sample App")
     end
 
-    it "should not have '| Home'" do
-       visit '/static_pages/home'
+    it "should not have a custom page title" do
        expect(page).not_to have_title('| Home')
     end
   end
 
   describe "Help page" do
-
+    before { visit '/static_pages/help'}
+    
     it "should have the content 'Help'" do
       visit '/static_pages/help'
       expect(page).to have_content('Help')

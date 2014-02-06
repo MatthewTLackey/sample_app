@@ -54,6 +54,7 @@ describe "User pages" do
     end
 
     describe "with valid information" do
+      # optionally replace this with: before { valid_signin(user) } This is left the way it is to help you learn.
       before do
         fill_in "Name",         with: "Example User"
         fill_in "Email",        with: "user@example.com"

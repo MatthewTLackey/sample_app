@@ -27,6 +27,10 @@ describe User do
     end
 
     it { should be_admin }
+
+    it "should not be allowed to delete itself" do 
+      
+    end
   end
 
   describe "when name is not present" do 

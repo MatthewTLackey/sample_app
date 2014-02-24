@@ -4,6 +4,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
       <%= render "user_form", f: f %>
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
     <% end %>

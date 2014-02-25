@@ -26,11 +26,51 @@ describe "Static pages" do
         visit root_path
       end
 
-      it " should render the user's feed" do 
+      it "should render the user's feed" do 
         user.feed.each do |item|
           expect(page).to have_selector("li##{item.id}", text: item.content)
         end
       end
+
+      it "should tell how many microposts the person has made" do 
+        expect(page).to have_content("2 microposts")
+      end
+    end
+
+    describe "with only one micropost" do 
+      let(:user) { FactoryGirl.create(:user) }
+      before do 
+        FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
+        sign_in user
+        visit root_path
+      end
+
+      it "should say 1 when there's only one" do 
+        expect(page).to have_content("1 micropost")
+      end
+    end
+
+    describe "no 'delete' link when another user is signed in" do 
+      let(:user) { FactoryGirl.create(:user) }
+      let(:second_user) { FactoryGirl.create(:user, email: "second_user@example.com")}
+
+      before do 
+        FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
+        FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")
+        sign_in second_user
+        visit user_path(user)
+      end
+
+      it "should have the other user's microposts" do 
+        expect(page).to have_content("Lorem ipsum")
+        expect(page).to have_content("Dolor sit amet")
+      end
+
+      it "should not have delete links" do 
+        expect(page).not_to have_content("delete")
+      end
+
+
     end
   end
 

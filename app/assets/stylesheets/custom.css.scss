@@ -213,9 +213,14 @@ input {
   float: left;
   margin-right: 10px;
 }
-asid{
+aside{
   textarea{
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+#counter{
+  float: right;
+  padding: 10px;
 }

@@ -7,7 +7,7 @@ $(document).ready(function() {
       } else {
         $("#counter").text(count + " characters remaining")
       }
-      $("#counter").css("color", "black");
+      $("#counter").css("color", "$grayLighter");
     } else if (count < 0) {
       if(count === -1){
         $("#counter").text(count * -1 + " character over the limit")

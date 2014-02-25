@@ -28,8 +28,9 @@ textarea {
 
 /* mixins, variabls, etc. */
 $grayMediumLight: #eaeaea;
-$grayLighter: #e8e8e8;
-$grayLight: #efefef;
+$grayLighter: #999999;
+$grayLight: #757575;
+$blue: blue;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -138,6 +139,35 @@ aside {
   }
 }
 
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars{
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+}
+
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -223,4 +253,5 @@ aside{
 #counter{
   float: right;
   padding: 10px;
+  color: $grayLighter;
 }
